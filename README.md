@@ -1,17 +1,11 @@
 ![image](https://i.imgur.com/3MpRXfn.png)
 
-# KitPvP
-The all-in-one battle plugin featuring custom kits, custom abilities, leaderboards, levels, kill streaks, and more.
+# 职业战争
+一体式战斗插件，具有自定义职业、自定义能力、排行榜、关卡、连杀记录等功能。
 
-## Support
-We use GitHub for plugin support, bug tracking, and any other topics related to KitPvP.
+## 支持
+我们使用GitHub进行插件支持、错误跟踪以及与职业战争相关的任何其他操作。
 
-Prior to contacting us via the below links, please ensure you have fully read the [KitPvP Wiki](https://github.com/cervinakuy/KitPvP/wiki).
-
-The below links require being logged into a GitHub account. 
-* [Ask a question](https://github.com/cervinakuy/KitPvP/issues/new?assignees=&labels=help+wanted&template=ask-for-assistance.md&title=)
-* [Report a bug](https://github.com/cervinakuy/KitPvP/issues/new?assignees=&labels=bug&template=report-a-bug.md&title=)
-
-## Quick Links
-* [Plugin Page](https://www.spigotmc.org/resources/27107/)
-* [Wiki](https://github.com/cervinakuy/KitPvP/wiki)
+## 其他连接
+* [Spigot页面](https://www.spigotmc.org/resources/27107/)
+* [源插件Wiki](https://github.com/cervinakuy/KitPvP/wiki)
