@@ -36,7 +36,9 @@ public class ArenaListener implements Listener {
 	@EventHandler
 	public void onBreak(BlockBreakEvent e) {
 		Player p = e.getPlayer();
-		
+		if (!p.getGameMode().equals(GameMode.CREATIVE)) {
+			return;
+		}
 		if (Toolkit.inArena(p) && config.getBoolean("Arena.PreventBlockBreaking")) {
 			e.setCancelled(!p.hasPermission("kp.arena.blockbreaking"));
 		}
@@ -45,7 +47,10 @@ public class ArenaListener implements Listener {
 	@EventHandler
 	public void onPlace(BlockPlaceEvent e) {
 		Player p = e.getPlayer();
-		
+
+		if (!p.getGameMode().equals(GameMode.CREATIVE)) {
+			return;
+		}
 		if (Toolkit.inArena(p) && config.getBoolean("Arena.PreventBlockPlacing")) {
 			e.setCancelled(!p.hasPermission("kp.arena.blockplacing"));
 		}
