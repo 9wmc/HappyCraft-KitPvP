@@ -1,9 +1,11 @@
 name: KitPvP
-author: Cervinakuy
+author:
+  - Cervinakuy
+  - AoneHax
 main: com.planetgallium.kitpvp.Game
-version: 2.2.4
-description: The ultimate all-in-one KitPvP plugin.
-website: https://www.spigotmc.org/resources/27107/
+version: 2.2.5
+description: 职业战争
+website: happycraft.cc
 softdepend: [PlaceholderAPI, WorldGuard]
 api-version: 1.13
 

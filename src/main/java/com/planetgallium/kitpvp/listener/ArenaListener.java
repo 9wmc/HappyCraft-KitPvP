@@ -4,6 +4,7 @@ import com.cryptomorin.xseries.XMaterial;
 import com.planetgallium.kitpvp.Game;
 import com.planetgallium.kitpvp.util.Resource;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -37,7 +38,13 @@ public class ArenaListener implements Listener {
 	public void onBreak(BlockBreakEvent e) {
 		Player p = e.getPlayer();
 		if (!p.getGameMode().equals(GameMode.CREATIVE)) {
+			e.setCancelled(true);
 			return;
+		} else {
+			if (p.getItemInHand().getType().toString().contains("SWORD")) {
+				e.setCancelled(true);
+				return;
+			}
 		}
 		if (Toolkit.inArena(p) && config.getBoolean("Arena.PreventBlockBreaking")) {
 			e.setCancelled(!p.hasPermission("kp.arena.blockbreaking"));
@@ -49,6 +56,7 @@ public class ArenaListener implements Listener {
 		Player p = e.getPlayer();
 
 		if (!p.getGameMode().equals(GameMode.CREATIVE)) {
+			e.setCancelled(true);
 			return;
 		}
 		if (Toolkit.inArena(p) && config.getBoolean("Arena.PreventBlockPlacing")) {

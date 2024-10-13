@@ -26,7 +26,7 @@ public class JoinListener implements Listener {
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
-
+		e.setJoinMessage("");
 		// Update checker
 		if (plugin.needsUpdate()) {
 			if (p.isOp()) {

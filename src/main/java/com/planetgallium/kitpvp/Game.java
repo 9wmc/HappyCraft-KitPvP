@@ -35,7 +35,7 @@ public class Game extends JavaPlugin implements Listener {
 	
 	@Override
 	public void onEnable() {
-		Toolkit.printToConsole("&7[&b&lKIT-PVP&7] &7Enabling &bKitPvP &7version &b" + this.getDescription().getVersion() + "&7...");
+		Toolkit.printToConsole("&7[&b&l职业战争&7] &7正在启动 &b职业战争 &7版本 &b" + this.getDescription().getVersion() + "&7...");
 
 		instance = this;
 		resources = new Resources(this);
@@ -76,19 +76,19 @@ public class Game extends JavaPlugin implements Listener {
 		}.runTaskAsynchronously(this);
 		
 		if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-			Bukkit.getConsoleSender().sendMessage(Toolkit.translate("[&b&lKIT-PVP&7] &7Hooking into &bPlaceholderAPI&7..."));
+			Bukkit.getConsoleSender().sendMessage(Toolkit.translate("&7[&b&l职业战争&7] &7正在与 &bPlaceholderAPI&7 插件挂钩..."));
 			new Placeholders(this).register();
 			hasPlaceholderAPI = true;
 		}
 
 		if (Bukkit.getPluginManager().isPluginEnabled("WorldGuard")) {
-			Bukkit.getConsoleSender().sendMessage(Toolkit.translate("[&b&lKIT-PVP&7] &7Hooking into &bWorldGuard&7..."));
+			Bukkit.getConsoleSender().sendMessage(Toolkit.translate("&7[&b&l职业战争&7] &7正在与 &bWorldGuard&7 插件挂钩..."));
 			hasWorldGuard = true;
 		}
 
 		populateUUIDCacheForOnlinePlayers();
 
-		Toolkit.printToConsole("&7[&b&lKIT-PVP&7] &aDone!");
+		Toolkit.printToConsole("&7[&b&l职业战争&7] &a加载完毕！");
 	}
 
 	private void populateUUIDCacheForOnlinePlayers() {
@@ -105,12 +105,12 @@ public class Game extends JavaPlugin implements Listener {
 		Updater.of(this).resourceId(27107).handleResponse((versionResponse, version) -> {
 			switch (versionResponse) {
 				case FOUND_NEW:
-					Bukkit.getConsoleSender().sendMessage(Toolkit.translate("&7[&b&lKIT-PVP&7] &aNew version found! Please update to v" + version + " on the Spigot page."));
+					Bukkit.getConsoleSender().sendMessage(Toolkit.translate("&7[&b&l职业战争&7] &a新版本出现了！ 请在Spigot页面升级至 v" + version + " 版本！&7&o(当前为开发版本)"));
 					needsUpdate = true;
 					updateVersion = version;
 					break;
 				case UNAVAILABLE:
-					Bukkit.getConsoleSender().sendMessage(Toolkit.translate("&7[&b&lKIT-PVP&7] &cUnable to perform an update check."));
+					Bukkit.getConsoleSender().sendMessage(Toolkit.translate("&7[&b&l职业战争&7] &cUnable to perform an update check."));
 					break;
 			}
 		}).check();
