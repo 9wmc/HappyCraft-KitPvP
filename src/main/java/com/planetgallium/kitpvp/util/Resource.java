@@ -104,7 +104,7 @@ public class Resource extends YamlConfiguration {
 					string.replace("%prefix%", Game.getPrefix() == null ? "" : Game.getPrefix()));
 		} else {
 			string = "String not found";
-			Toolkit.printToConsole(String.format("&7[&b&lKIT-PVP&7] &cString with path %s was not found.", path));
+			Toolkit.printToConsole(String.format("&7[&b&l职业战争&7] &cString with path %s was not found.", path));
 		}
 
 		return string;

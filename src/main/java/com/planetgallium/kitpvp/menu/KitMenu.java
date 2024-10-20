@@ -28,7 +28,6 @@ public class KitMenu {
 			String name = resources.getMenu().fetchString(itemPath + ".Name");
 			Material material = Toolkit.safeMaterial(resources.getMenu().fetchString(itemPath + ".Material"));
 			List<String> lore = resources.getMenu().getStringList(itemPath + ".Lore");
-
 			menu.addItem(name, material, lore, Integer.parseInt(slot));
 		}
 	}

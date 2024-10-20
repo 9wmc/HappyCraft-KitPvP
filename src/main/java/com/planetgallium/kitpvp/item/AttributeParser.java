@@ -118,7 +118,7 @@ public class AttributeParser {
                 if (enchantmentFromConfig.isPresent()) {
                     enchantment = enchantmentFromConfig.get().getEnchant();
                 } else {
-                    Toolkit.printToConsole(String.format("&7[&b&lKIT-PVP&7] &cUnknown enchantment [%s], defaulting to [THORNS].", enchantmentName));
+                    Toolkit.printToConsole(String.format("&7[&b&l职业战争&7] &cUnknown enchantment [%s], defaulting to [THORNS].", enchantmentName));
                 }
                 int amplifier = resource.getInt(path + ".Enchantments." + enchantmentName);
 

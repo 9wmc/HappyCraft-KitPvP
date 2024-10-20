@@ -171,36 +171,36 @@ public class MainCommand implements CommandExecutor {
     }
 
     private void executeInfoCommand(CommandSender sender) {
-        sender.sendMessage(Toolkit.translate("&7[&b&lKIT-PVP&7]"));
-        sender.sendMessage(Toolkit.translate("&7Version: &b" + plugin.getDescription().getVersion()));
-        sender.sendMessage(Toolkit.translate("&7Developer: &bCervinakuy"));
-        sender.sendMessage(Toolkit.translate("&7Commands: &b/kp help"));
-        sender.sendMessage(Toolkit.translate("&7Download: &bbit.ly/KP-Download"));
+        sender.sendMessage(Toolkit.translate("&7[&b&l职业战争&7]"));
+        sender.sendMessage(Toolkit.translate("&7版本: &b" + plugin.getDescription().getVersion() + (plugin.needsUpdate() ? "-DEVELOPMENT" : "")));
+        sender.sendMessage(Toolkit.translate("&7开发: &bCervinakuy &7&o(原作者) &bAoneHax &7&o(后续修改)"));
+        sender.sendMessage(Toolkit.translate("&7指令列表: &b/kp help"));
+        //sender.sendMessage(Toolkit.translate("&7Download: &bbit.ly/KP-Download"));
     }
 
     private void executeHelpCommand(CommandSender sender) {
-        sender.sendMessage(Toolkit.translate("&3&m           &r &b&lKIT-PVP &3Created by Cervinakuy &3&m             "));
+        sender.sendMessage(Toolkit.translate("&3&m           &r &b&l职业战争 &3HappyCraft修改 &3&m             "));
         sender.sendMessage(Toolkit.translate(" "));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp &7Displays information about KitPvP."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp help &7Displays the help message."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp reload &7Reloads the configuration files."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp debug &7Prints debug information."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp addspawn &7Adds a spawn to an arena."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp arena <arena> &7Teleports you to a different arena."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp delarena &7Removes an arena."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp spawn &7Teleports you to the local arena spawn."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp create <kitName> &7Creates a kit from your inventory."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp delete <kitName> &7Deletes an existing kit."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp preview <kitName> &7Preview the contents of a kit."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp kits &7Lists all available kits."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp kit <kitName> &7Select a kit."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp kit <kitName> <player> &7Attempts to select a kit for a player."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp clear &7Clears your current kit."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp clear <player> &7Clears a kit for a player."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp stats &7View your stats."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp stats <player> &7View the stats of another player."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp menu &7Displays the kits menu."));
-        sender.sendMessage(Toolkit.translate("&7- &b/kp setstats <player> <type> <amount> &7Change stats of a player."));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp &7显示职业战争基本信息"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp help &7显示本帮助信息"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp reload &7重载配置文件"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp debug &7展示调试信息"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp addspawn &7添加出生点"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp arena <arena> &7传送至不同竞技区域"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp delarena &7删除竞技区域"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp spawn &7传送至出生点"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp create <职业名称> &7根据背包创建职业"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp delete <职业名称> &7删除已存在的职业"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp preview <职业名称> &7预览职业物品"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp kits &7显示职业列表"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp kit <职业名称> &7选择职业"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp kit <职业名称> <玩家> &7为玩家强制选择职业"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp clear &7清除你目前选择的职业"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp clear <玩家> &7为玩家清除选择的职业"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp stats &7显示个人数据"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp stats <玩家> &7显示该玩家个人数据"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp menu &7打开职业选择菜单"));
+        sender.sendMessage(Toolkit.translate("&7- &b/kp setstats <玩家> <数据类型> <数值> &7更改玩家数据"));
         sender.sendMessage(Toolkit.translate(" "));
         sender.sendMessage(Toolkit.translate("&3&m                                                                               "));
     }
@@ -210,7 +210,15 @@ public class MainCommand implements CommandExecutor {
         CacheManager.clearCaches();
         arena.getMenus().getKitMenu().rebuildCache();
         arena.getAbilities().rebuildCache();
-
+        Bukkit.getOnlinePlayers().forEach(p -> {
+            if (resources.getScoreboard().getBoolean("Scoreboard.General.Enabled")) {
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    arena.updateScoreboards(p, false);
+                }
+            }.runTaskLater(plugin, 20L);
+        }});
         sender.sendMessage(messages.fetchString("Messages.Commands.Reload"));
     }
 
@@ -233,10 +241,10 @@ public class MainCommand implements CommandExecutor {
                 (plugin.needsUpdate() ? "&c(Requires Update)" : "&e(Latest Version)");
         String isSpawnSet = (config.contains("Arenas") ? "&eConfigured" : "&cUnconfigured");
 
-        sender.sendMessage(Toolkit.translate("&7[&b&lKIT-PVP&7] &aServer Version: &7" + serverVersion));
-        sender.sendMessage(Toolkit.translate("&7[&b&lKIT-PVP&7] &aPlugin Version: &7" + pluginVersion));
-        sender.sendMessage(Toolkit.translate("&7[&b&lKIT-PVP&7] &aSpawn Set: " + isSpawnSet));
-        sender.sendMessage(Toolkit.translate("&7[&b&lKIT-PVP&7] &aPlugin List: &7" + names));
+        sender.sendMessage(Toolkit.translate("&7[&b&l职业战争&7] &aServer Version: &7" + serverVersion));
+        sender.sendMessage(Toolkit.translate("&7[&b&l职业战争&7] &aPlugin Version: &7" + pluginVersion));
+        sender.sendMessage(Toolkit.translate("&7[&b&l职业战争&7] &aSpawn Set: " + isSpawnSet));
+        sender.sendMessage(Toolkit.translate("&7[&b&l职业战争&7] &aPlugin List: &7" + names));
     }
 
     private void executeKitsCommand(CommandSender sender) {
@@ -547,7 +555,7 @@ public class MainCommand implements CommandExecutor {
             unknownCommand.append(arg).append(" ");
         }
 
-        sender.sendMessage(Toolkit.translate("%prefix% &cUnknown command: /" + alias + " " + unknownCommand));
+        sender.sendMessage(Toolkit.translate("%prefix% &c未知的指令: /" + alias + " " + unknownCommand));
     }
 
     private boolean isValidStatIdentifier(String identifierToValidate, boolean includeExperience) {

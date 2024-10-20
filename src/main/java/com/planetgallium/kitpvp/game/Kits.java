@@ -264,7 +264,7 @@ public class Kits {
                     e.printStackTrace();
                 }
             } else {
-                Toolkit.printToConsole("&7[&b&lKIT-PVP&7] &cNo kit with name " + kitName + " found in the kits folder." +
+                Toolkit.printToConsole("&7[&b&l职业战争&7] &cNo kit with name " + kitName + " found in the kits folder." +
                         " Try reloading the server.");
             }
         }

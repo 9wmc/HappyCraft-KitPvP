@@ -20,7 +20,7 @@ public class Resources {
 		this.kitToResource = new HashMap<>();
 		this.abilityToResource = new HashMap<>();
 
-		Toolkit.printToConsole("&7[&b&lKIT-PVP&7] &7Loading configuration files...");
+		Toolkit.printToConsole("&7[&b&l职业战争&7] &7正在加载配置文件...");
 		this.config = new Resource(plugin, "config.yml");
 		this.abilities = new Resource(plugin, "abilities.yml");
 		this.killstreaks = new Resource(plugin, "killstreaks.yml");
@@ -53,7 +53,7 @@ public class Resources {
 			abilityToResource.put("Stampede.yml", new Resource(plugin, "abilities/Stampede.yml"));
 		}
 
-		Toolkit.printToConsole("&7[&b&lKIT-PVP&7] &7Loading kit files...");
+		Toolkit.printToConsole("&7[&b&l职业战争&7] &7正在加载职业列表...");
 		load();
 	}
 	

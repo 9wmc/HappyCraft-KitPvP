@@ -27,7 +27,7 @@ public class Infoboard {
         this.tag = "PlaceHolder";
         this.lastSentCount = -1;
         if (title.length() > 32) {
-            Toolkit.printToConsole("&7[&b&lKIT-PVP&7] &cScoreboard title in scoreboard.yml is too long;" +
+            Toolkit.printToConsole("&7[&b&l职业战争&7] &cScoreboard title in scoreboard.yml is too long;" +
                     " must be less than or equal to 32 characters. Scoreboard will not display.");
         }
         Preconditions.checkState(title.length() <= 32, (Object) "title cannot be more than 32 characters");

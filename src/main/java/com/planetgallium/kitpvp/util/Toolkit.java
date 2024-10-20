@@ -35,7 +35,7 @@ public class Toolkit {
 		if (Game.getInstance().getResources().getConfig().contains("Arenas")) {
 			return Game.getInstance().getResources().getConfig().contains("Arenas." + world.getName());
 		} else {
-			Toolkit.printToConsole("&7[&b&lKIT-PVP&7] &cThere was no spawn found, please set it using /kp addspawn.");
+			Toolkit.printToConsole("&7[&b&l职业战争&7] &cThere was no spawn found, please set it using /kp addspawn.");
 		}
 		return false;
 	}
@@ -85,7 +85,7 @@ public class Toolkit {
 			String[] commandPhrase = commandString.split(":", 2);
 
 			if (commandPhrase.length == 1) {
-				Toolkit.printToConsole("&7[&b&lKIT-PVP&7] &cIncorrect command format. " +
+				Toolkit.printToConsole("&7[&b&l职业战争&7] &cIncorrect command format. " +
 						"Please see: &fhttps://bit.ly/kp-command-format");
 				return;
 			}
@@ -101,7 +101,7 @@ public class Toolkit {
 			} else if (sender.equals("player")) {
 				p.performCommand(replaceCommandPlaceholders(command, p, replaceFrom, replaceTo));
 			} else {
-				Toolkit.printToConsole("&7[&b&lKIT-PVP&7] &cIncorrect command format. " +
+				Toolkit.printToConsole("&7[&b&l职业战争&7] &cIncorrect command format. " +
 						"Please see: &fhttps://bit.ly/kp-command-format");
 				return;
 			}
@@ -353,7 +353,7 @@ public class Toolkit {
 		}
 
 		// 3. Native check fails; return fallbackMaterial
-		printToConsole(String.format("&7[&b&lKIT-PVP&7] &cUnknown material [%s], defaulting to [%s].",
+		printToConsole(String.format("&7[&b&l职业战争&7] &cUnknown material [%s], defaulting to [%s].",
 				materialName, FALLBACK_MATERIAL));
 		return FALLBACK_MATERIAL;
 	}
@@ -370,7 +370,7 @@ public class Toolkit {
 				return sound;
 			}
 		}
-		printToConsole("&7[&b&lKIT-PVP&7] &cInvalid sound: " + soundName);
+		printToConsole("&7[&b&l职业战争&7] &cInvalid sound: " + soundName);
 		return XSound.ENTITY_ENDER_DRAGON_HURT.parseSound();
 	}
 
@@ -382,7 +382,7 @@ public class Toolkit {
 				return potionEffectType;
 			}
 		}
-		printToConsole("&7[&b&lKIT-PVP&7] &cInvalid potion effect type: " + potionEffectTypeName);
+		printToConsole("&7[&b&l职业战争&7] &cInvalid potion effect type: " + potionEffectTypeName);
 		return XPotion.BLINDNESS.getPotionEffectType();
 	}
 

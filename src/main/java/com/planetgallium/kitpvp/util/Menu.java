@@ -42,7 +42,6 @@ public class Menu {
 		ItemMeta meta = item.getItemMeta();
 
 		lore = Toolkit.colorizeList(lore);
-
 		meta.setDisplayName(Toolkit.translate(name));
 		meta.setLore(lore);
 		item.setAmount(amount > 0 ? amount : 1);
@@ -56,7 +55,21 @@ public class Menu {
 	}
 	
 	public void openMenu(Player p) {
-		p.openInventory(menu);
+		Inventory newMenu = menu;
+		for (int i = 0; i < size; i++) {
+			if (newMenu.getItem(i) != null) {
+				ItemStack item = newMenu.getItem(i);
+                if (item != null && (item.getItemMeta() != null && item.getItemMeta().getLore() != null)) {
+					ItemMeta itemMeta = item.getItemMeta();
+					List<String> lore = itemMeta.getLore();
+					lore.replaceAll(text -> Toolkit.addPlaceholdersIfPossible(p, text));
+					itemMeta.setLore(lore);
+					item.setItemMeta(itemMeta);
+					newMenu.setItem(i, item);
+                }
+			}
+		}
+		p.openInventory(newMenu);
 	}
 	
 	public void closeMenu(Player p) {

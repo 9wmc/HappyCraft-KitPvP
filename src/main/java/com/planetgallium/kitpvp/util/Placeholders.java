@@ -3,6 +3,8 @@ package com.planetgallium.kitpvp.util;
 import com.planetgallium.database.TopEntry;
 import com.planetgallium.kitpvp.Game;
 import org.apache.commons.lang.StringUtils;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import com.planetgallium.kitpvp.game.Arena;
 
@@ -39,9 +41,19 @@ public class Placeholders extends PlaceholderExpansion {
 			return handleLeaderboardPlaceholder(identifier);
 		}
 
+		if (identifier.toLowerCase().contains("kittip")) {
+			String s = identifier;
+			s.toLowerCase().replace("%kitpvp_kittip_", "");
+			s.replace("%", "");
+			s = ChatColor.translateAlternateColorCodes('&', p.hasPermission("kp.kit." + s) ? "&e左键选择" : "&c你未拥有该职业！\n");
+			return s;
+		}
+
 		if (p != null) {
 			return translatePlaceholderAPIPlaceholders(identifier, p.getName());
 		}
+
+
 		return null;
 	}
 
@@ -70,7 +82,7 @@ public class Placeholders extends PlaceholderExpansion {
 			String toBuiltInPlaceholder = placeholderAPItoBuiltIn.get(placeholderAPIIdentifier);
 			return arena.getUtilities().replaceBuiltInPlaceholdersIfPresent(toBuiltInPlaceholder, username);
 		} else {
-			Toolkit.printToConsole(String.format("&7[&b&lKIT-PVP&7] &cUnknown placeholder identifier [%s]. " +
+			Toolkit.printToConsole(String.format("&7[&b&l职业战争&7] &cUnknown placeholder identifier [%s]. " +
 							"Please see plugin page.", placeholderAPIIdentifier));
 			return "invalid-placeholder";
 		}

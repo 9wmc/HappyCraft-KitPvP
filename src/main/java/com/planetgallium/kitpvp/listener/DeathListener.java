@@ -214,7 +214,6 @@ public class DeathListener implements Listener {
 
 		} else {
 			broadcast(victim.getWorld(), getDeathMessage(victim, null, "Unknown"));
-
 		}
 	}
 

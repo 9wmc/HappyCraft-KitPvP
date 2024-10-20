@@ -46,7 +46,7 @@ public class Infobase {
     }
 
     private Database setupDatabase(Resource config) {
-        Toolkit.printToConsole("&7[&b&lKIT-PVP&7] Establishing database connection...");
+        Toolkit.printToConsole("&7[&b&l职业战争&7] 正在连接数据库...");
 
         // Set database to MySQL, or in any other case, SQLite
         if (config.fetchString("Storage.Type").equalsIgnoreCase("mysql")) {
@@ -128,7 +128,7 @@ public class Infobase {
 
         File renamedStatsFile = new File("old_stats.yml");
         if (!statsResource.getFile().renameTo(renamedStatsFile)) {
-            Toolkit.printToConsole("&7[&b&lKIT-PVP&7] &cThere was a problem renaming stats.yml to old_stats.yml.");
+            Toolkit.printToConsole("&7[&b&l职业战争&7] &c将 stats.yml 重命名为 old_stats.yml 时出现了问题！");
         }
     }
 
@@ -206,7 +206,7 @@ public class Infobase {
             if (record != null) {
                 table.updateRecord(uuidField, fieldToUpdate);
             } else {
-                System.out.printf("[Database] Failed to set data; database does not contain player %s\n", username);
+                System.out.printf("&7[&b&l职业战争&7] &c设置数据失败， 数据库中不包含玩家%s！", username);
             }
         }
     }

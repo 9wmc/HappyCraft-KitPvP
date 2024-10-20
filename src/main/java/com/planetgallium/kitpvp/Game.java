@@ -110,7 +110,7 @@ public class Game extends JavaPlugin implements Listener {
 					updateVersion = version;
 					break;
 				case UNAVAILABLE:
-					Bukkit.getConsoleSender().sendMessage(Toolkit.translate("&7[&b&l职业战争&7] &cUnable to perform an update check."));
+					Bukkit.getConsoleSender().sendMessage(Toolkit.translate("&7[&b&l职业战争&7] &c无法检查升级，请尝试检查你的网络！"));
 					break;
 			}
 		}).check();
